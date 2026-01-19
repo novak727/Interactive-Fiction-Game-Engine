@@ -1,0 +1,142 @@
+% ---------------------------------------------------------------------------
+% Sci-Fi Horror Theme game 
+% ---------------------------------------------------------------------------
+
+<game>
+	<ptype>combat</ptype>	
+		
+	% Area 1: Cryo Bay (START)
+	<area>
+		<normal>
+			<desc>You awake from a cramped cryo-pod. Emergency lights flash. The main door, the armory, and the observation deck are all sealed shut. The only way is down, to the cargo bay.</desc>
+			<feats>0,0</feats>
+		</normal>
+	</area>
+      
+    <item>
+		<use>
+			<name>Crowbar</name>
+			<desc>A solid piece of metal. Good for prying.</desc>
+			<star>1</star>
+			<actmess>With a loud screech, you pry open the three sealed doors, granting access.</actmess>
+			<actar>1</actar>
+			<rule>1,u,2</rule>
+			<rule>1,r,4</rule>
+			<rule>1,l,7</rule>
+		</use>
+	</item>
+
+	% Area 2: Main Hallway
+	<area>
+		<normal>
+			<desc>A long, dark hallway. You see the Med-Bay, The bridge, and The Cryo Bay.</desc>
+			<feats>0,0</feats>
+		</normal>
+	</area>
+
+	% Area 3: Med-Bay (REST AREA)
+	<area>
+		<rest>
+			<desc>A sterile med-bay. An "Auto-Doc" whirs in the corner, ready for use.</desc>
+			<feats>0,0</feats>
+			<actmess>The Auto-Doc hums to life, healing your wounds and calming your nerves. It can only be used once.</actmess>
+			<pause>f</pause>
+		</rest>
+	</area>
+
+	<item>
+		<consume>
+			<name>First-Aid Kit</name>
+			<desc>A standard-issue trauma kit. Looks useful.</desc>
+			<star>3</star>
+			<actmess>You patch yourself up. You feel much better.</actmess>
+			<actar>0</actar>
+			<effect>1,25</effect> 
+			% Effect ID 1 = +HP, 25 = amount
+		</consume>
+	</item>
+
+	% Area 4: Armory (EVENT AREA)
+	<area>
+		<event>
+			<desc>A small armory, mostly looted. A broken injector on the floor contains a single drop of "Combat Stim".</desc>
+			<feats>0,0</feats>
+			<actmess>The stim hits your system. You feel a permanent surge of strength!</actmess>
+			<altstat>1,a,5</altstat> 
+			% 1=Positive, a=Attack, 5=amount
+		</event>
+	</area>
+
+	<item>
+		<battle>
+			<name>Stun Baton</name>
+			<desc>A heavy baton crackling with blue energy.</desc>
+			<star>4</star>
+			<damage>10</damage>
+		</battle>
+	</item>
+
+	% Area 5: Bridge
+	<area>
+		<normal>
+			<desc>The ship's bridge. A large AI-controlled security bot blocks the door to the escape pods (up).</desc>
+			<feats>0,0</feats>
+		</normal>
+	</area>
+
+	<enemy>
+		<name>Rogue AI-bot</name>
+		<hp>50</hp>
+		<attack>8</attack>
+		<area>5</area>
+	</enemy>
+
+	% Area 6: Escape Pod Bay (GOAL)
+	<area>
+		<normal>
+			<desc>You made it! An escape pod is waiting. You're safe!</desc>
+			<feats>0,1</feats>
+		</normal>
+	</area>
+
+	% Area 7: Observation Deck (EVENT AREA)
+	<area>
+		<event>
+			<desc>A large window shows the terrifying, endless void of space, and the wreckage of... another ship.</desc>
+			<feats>0,0</feats>
+			<actmess>The horrifying sight rattles your mind.</actmess>
+			<altstat>0,s,20</altstat> 
+			% 0=Negative, s=Sanity, 20=amount
+		</event>
+	</area>
+	
+	<item>
+		<basic>
+			<name>Captain's Log</name>
+			<desc>The last entry reads: 'The anomaly... it's not a star... it's... oh no...'</desc>
+			<star>7</star>
+		</basic>
+	</item>
+
+	% Area 8: Cargo Bay (INSTADEATH)
+	<area>
+		<normal>
+			<desc>The cargo bay is breached. You are blown out into the cold vacuum of space.</desc>
+			<feats>1,0</feats>
+		</normal>
+	</area>
+
+	% ----------------------  LINKS  ----------------------------
+	% 1=Cryo, 2=Hall, 3=MedBay, 4=Armory, 5=Bridge, 6=Pods, 7=ObsDeck, 8=Cargo
+	<links>
+		<linkset>1,8,1,1</linkset>
+		<linkset>5,1,3,2</linkset>
+		<linkset>3,3,3,2</linkset>
+		<linkset>4,4,1,4</linkset>
+		<linkset>6,2,5,5</linkset>
+		<linkset>6,6,6,6</linkset>
+		<linkset>7,7,7,1</linkset>
+		<linkset>8,8,8,8</linkset>
+	</links>
+
+</game>
