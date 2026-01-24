@@ -25,7 +25,7 @@ The program in this repository is executed using the C++ language and the g++ co
 
 g++ for [Windows](https://sourceforge.net/projects/mingw/), don't forget to add the binary to your [path environment variable](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 
-g++ can be installation on Linux using your favorite package manager.
+g++ can be installed on Linux using your favorite package manager.
 
 ### Compile and Execute
 #### Option 1: using [Make](https://www.gnu.org/software/make/)
